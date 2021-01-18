@@ -19,7 +19,7 @@ int f(int x,int y){//조합
 	int f=ss/s;
 	return f;
 }
-void f(int s[],int b,int i,int st);
+void fff(int s[],int b,int i,int st);
 bool g(int s[],int i);
 
 
@@ -79,18 +79,18 @@ int main(){
 	//printf("%d ",cou);
 	int st=cou;
 	//printf("%d ",st);
-	int s[st]={0,};
+	int s[10]={0,};
 	z=z/10;
 	s[0]=a/z;
 	//printf("\n%d\n",a);
 	st=st-1;//숫자가 배열 0부터 st까지 봐야함
 	//printf("%d",b); 
 	//printf(" %d",st);
-	f(s,b,0,st);//s는 배열, b는 백트래킹 돌려야 하는 개수 
+	fff(s,b,0,st);//s는 배열, b는 백트래킹 돌려야 하는 개수 
 	
 }
 int sss=0;
-void f(int s[],int b,int i,int st){
+void fff(int s[],int b,int i,int st){
 	int j;
 	if(g(s,i)){
 		if(i==st){
@@ -104,7 +104,7 @@ void f(int s[],int b,int i,int st){
 		else{
 			for(j=0;j<s[0];j++){
 				s[i+1]=j;
-				f(s,b,i+1,st);
+				fff(s,b,i+1,st);
 			}
 		}
 	}
