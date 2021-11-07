@@ -1,16 +1,11 @@
-#include<stdio.h>
+#include <stdio.h>
 int main(void){
-	int a,b,c,n,f,s,sum;
+	int c,n,f,s,sum=1;
 	scanf("%d",&n);
-	if(n==0){
-		printf("1");
-		return 0;
-	}
 	int n2=n;
 	while(1){
 		if (n2<10){
-			c=n2;
-			n2=(n2*10)+c;
+			n2=(n2*10)+n2;
 		}
 		else {
 			f=n2/10;
@@ -25,9 +20,7 @@ int main(void){
 			break;
 		}
 		sum++;
-		printf("%d ",n2);
+		//printf("%d ",n2);
 	}
 	printf("%d",sum);
-	int ccc;
-	scanf("%d",&ccc);
 }
