@@ -10,9 +10,10 @@ int main()
 		num[i]=a%42;
 	}
 	int count=0;
-	int j=9;
+	int j=10;
 	for(int i=0;i<9;i++){
-		if(j!=9)continue;
+		//printf("%d ",j);
+		if(j!=10)continue;
 		for(j=i+1;j<10;j++){
 			if(num[i]==num[j]){
 				count++;
@@ -20,5 +21,5 @@ int main()
 			}
 		}
 	}
-	printf("%d",count);
+	printf("%d",10-count);
 }
