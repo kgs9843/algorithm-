@@ -9,17 +9,23 @@ int main()
 		scanf("%d",&a);
 		num[i]=a%42;
 	}
-	int count=0;
-	int j=10;
-	for(int i=0;i<9;i++){
-		//printf("%d ",j);
-		if(j!=10)continue;
-		for(j=i+1;j<10;j++){
+	
+	int count;
+	int i,j;
+	for(i=0;i<10;i++){
+		count=0;
+		for(j=0;j<10;j++){
+			if(i==j)continue;
 			if(num[i]==num[j]){
-				count++;
-				break;
+				num[j]=-1;
 			}
 		}
+		if(num[i]==-1)continue;
 	}
-	printf("%d",10-count);
+	for(i=0;i<10;i++){
+		if(num[i]>=0){
+			count++;
+		}
+	}
+	printf("%d",count);
 }
