@@ -7,14 +7,23 @@ int main(){
 		j++;
 	}
 	int a[26];
-	int i;
+	int i,k;
 	for(i=0;i<26;i++){
 		a[i]=-1;
 		//printf("%d ",a[i]);
 	}
-	int nb[j];
 	for(i=0;i<j;i++){
-		nb[i]=s[i]-97;
-		printf("%d ",nb[i]);
+		int change=s[i];
+		//printf("%d ",change);
+		for(k=0;k<26;k++){
+			if (change==k+97){
+				if(a[k]!=-1)break;
+				a[k]=i;
+			}
+		}
 	}
+	for(i=0;i<26;i++){
+		printf("%d ",a[i]);
+	}
+	return 0;
 }
