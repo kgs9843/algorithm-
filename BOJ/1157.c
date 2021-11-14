@@ -14,12 +14,7 @@ int main(){
 		nc=wc;
 		word[i]=nc;
 	}
-	int c[count];
-	for(i=0;i<count;i++){
-		for(j=97;j<=122;j++){
-			wc=word[i];
-			if(wc==)
-		}
-	}
+	
+	return 0;
 	
 }
