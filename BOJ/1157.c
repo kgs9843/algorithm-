@@ -14,6 +14,34 @@ int main(){
 		nc=wc;
 		word[i]=nc;
 	}
+	int change;
+	int alphabet[26]={0,};
+	for(i=0;i<count;i++){
+		change=word[i]-97;
+		//printf("%d ",change);
+		for(j=0;j<26;j++){
+			if(change==j){
+				alphabet[j]++;
+			}
+		}
+	}
+	int max=0;
+	for(i=0;i<26;i++){
+		//printf("%d ",alphabet[i]);
+		if(max<alphabet[i])max=alphabet[i];
+	}
+	int an=0;
+	char answer;
+	for(i=0;i<26;i++){
+		if(alphabet[i]==max){
+			answer=i+65;
+			an++;
+		}
+	}
+	if(an>1)printf("?");
+	else{
+		printf("%c",answer);
+	}
 	
 	return 0;
 	
