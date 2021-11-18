@@ -7,12 +7,13 @@ int main(){
 		printf("1");
 		return 0;
 	}
-	int count=1;
+	unsigned long long int count=1;
 	while((front>n)||(back<n)){
 		front=back+1;
 		count++;
+		//printf("%llu ",back);
 		back=6*count+back;
 	} 
-	printf("%d",count);
+	printf("%llu",count+1);
 	return 0;
 }
