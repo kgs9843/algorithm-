@@ -4,7 +4,7 @@ int main()
 {
 	int a,b,v;
 	scanf("%d %d %d",&a,&b,&v);
-	int answer=2;
+	int answer=1;
 	int variable=a-b;
 	if(a>=v){
 		printf("1");
@@ -12,8 +12,9 @@ int main()
 	}
 	int onet=v-a;
 	int speed=(onet)/variable;
-	printf("%d",answer);
+	int speed2=onet%variable;
+	if(speed2>0)speed++;
+	
+	printf("%d",speed+1);
 	return 0;
-	
-	
 }
