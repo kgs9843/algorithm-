@@ -1,0 +1,97 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+
+typedef struct {
+	int top;
+	char data[100001];
+}stack;
+
+//스택구성
+void init_stack(stack* p) {
+	p->top = -1;
+}
+int is_empty(stack* p) {
+	return p->top == -1;
+}
+int is_full(stack* p,int n) {
+	return p->top == n;
+}
+char pop(stack* p) {
+	return p->data[(p->top)--];
+}
+void push(stack* p,char data) {
+	p->data[++(p->top)] = data;
+}
+void print_stack(stack* p) {
+	for (int i = 0; i <= p->top; i++) {
+		printf("%c",p->data[i]);
+	}
+	printf("\n");
+}
+
+
+
+void answer(stack* p, int n) {
+	int input;
+	scanf("%d", &input);
+	int i;
+
+	//새로운 스택 생성
+	stack test_stack;
+	init_stack(&test_stack);
+
+
+	for (i = 0; i < input; i++) {
+		char symbol;
+		scanf(" %c", &symbol);
+		if (symbol == 'L') {
+			//L이면 새로운 스택에다 마지막 요소 넣고 pop
+			if (!is_empty(p)) {
+				push(&test_stack, pop(p));
+			}
+		}
+		else if (symbol == 'D') {
+			//D면 새로운 스택을 pop 후 원래 스택에 push
+			if (!is_empty(&test_stack)) {
+				push(p, pop(&test_stack));
+			}
+		}
+		else if (symbol == 'B') {
+			//B면 그냥 pop
+			if (!is_empty(p)) {
+				pop(p);
+			}
+		}
+		else if (symbol == 'P') {
+			//P일 때 입력받은 문자를 스택에 push해줌
+			char p_next;
+			scanf(" %c",&p_next);
+			push(p, p_next);
+		}
+	}
+
+	//새로운 스택에 남아있는 것들을 원래 스택에 옮겨줌
+	while (!is_empty(&test_stack)) {
+		push(p, pop(&test_stack));
+	}
+
+	print_stack(p);
+}
+
+
+
+int main(void) {
+	stack p;
+	init_stack(&p);
+	char input[100001];
+	scanf("%s", input);// 처음에 입력받은 문자열 ex)abcd
+	int n = strlen(input);
+
+	int i;
+	for (i = 0; i < n; i++) {
+		push(&p, input[i]);//스택p에다 하나씩 저장	
+	}
+	
+	answer(&p, n);
+}
