@@ -1,0 +1,73 @@
+aa=1
+n=int(input())
+a=list(input().split())
+#print(a)
+visit=[0]*10
+array=[]
+recutive=0
+
+def Mdfs(n,c,num):
+    global aa
+    global a
+    global array
+    global visit
+    global recutive
+
+    visit[n]=1
+    array.append(n)
+    #print(array)
+    #print(visit)
+
+    #종료조건
+    if(c==num):
+        recutive=1
+        return
+    else:
+        for i in reversed(range(10)):
+            if(aa==2):
+                i=9-i
+            #방문안했고 부등호 조건이 참이면
+            if(a[c-1]=='>'):
+                if(visit[i]==0 and i<n):
+                    
+                    Mdfs(i,c+1,num)
+                    visit[i]=0
+                    #재귀함수 종료
+                    if(recutive==1):
+                        return
+                    del array[-1]
+            elif(a[c-1]=='<'):
+                if(visit[i]==0 and i>n):
+                    Mdfs(i,c+1,num)
+                    visit[i]=0
+                    if(recutive==1):
+                        return
+                    del array[-1]                    
+
+
+#최댓값
+for i in reversed(range(10)):
+    Mdfs(i,1,n+1)
+    #print(array)
+    if(recutive==1):
+        break
+    visit=[0]*10
+    array=[]
+ans=[]
+ans.append(array)
+#최솟값
+recutive=0
+array=[]
+aa=2
+for i in range(10):
+    Mdfs(i,1,n+1)
+    #print(array)
+    if(recutive==1):
+        break
+    visit=[0]*10
+    array=[]
+ans.append(array)
+for i in range(2):
+    for j in range(n+1):
+        print(ans[i][j],end='')
+    print()
